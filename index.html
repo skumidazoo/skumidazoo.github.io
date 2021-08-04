@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SKUMIDA ZOO</title>
+
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="ico/apple-touch-icon-57x57.png" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/" />
 <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72x72.png" />
@@ -26,756 +27,158 @@
 <meta name="msapplication-wide310x150logo" content="ico/mstile-310x150.png" />
 <meta name="msapplication-square310x310logo" content="ico/mstile-310x310.png" />
 
-    
+    <style>
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        scroll-behavior: smooth;
+    }
+
+    body{
+        min-height: 100vh;
+        overflow-x: hidden;
+        background: linear-gradient(#2b1055,#7597de);
+    }
+
+    header{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 30px 100px ;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    header .logo{
+        color: #fff;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 2em;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    section{
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        padding: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow:hidden;
+    }
+
+    section::before{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100px;
+        background: linear-gradient(to top,#1c0522,transparent);
+        z-index: 1000;
+    }
+
+    section img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        pointer-events: none;
+    }
+
+    section img#moon{
+        mix-blend-mode: screen;
+    }
+
+    section img#mountains_front{
+        z-index: 10;
+    }
+
+    #text{
+        position: absolute;
+        color: #fff;
+        white-space: nowrap;
+        font-size: 7.5vw;
+        z-index: 9;
+        right: -350px;
+    }
+
+    #btn{
+        text-decoration: none;
+        display: inline-block;
+        padding: 8px 30px;
+        border-radius: 40px;
+        background: #fff;
+        color: #2b1055;
+        font-size: 1.5em;
+        z-index: 9;
+        transform: translateY(100px);
+    }
+
+    .sec{
+        position: relative;
+        padding: 100px;
+        background: #1c0522;
+    }
+
+    .sec h2{
+        font-size: 3.5em;
+        margin-bottom: 10px;
+        color: #fff;
+    }
+
+    .sec p{
+        font-size: 1.2em;
+        color: #fff;
+    }
+
+    </style>
 </head>
-
-<style>
-
-/*atas*/
-
-*{
-	margin: 0;
-	padding: 0;
-	font-family: sans-serif;
-}
-
-body{
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-
-}
-
-.nav{
-	width: 100%;
-	height: 20%;
-  background-color: white;
-}
-
-.menu{
-	width: 85%;
-	margin: auto;
-	padding: 35px 0px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
-
-.logo{
-	width: 300px;
-	cursor: pointer;
-	color: black;
-	text-decoration: none;
-	font-family: comic sans ms;
-	font-size: 40px;
-}
-
-.menu ul li{
-	list-style: none;
-	display: inline-block;
-	margin: 0 20px;
-	position: relative;
-}
-
-.menu ul li a{
-	text-decoration: none;
-	color: black;
-	text-transform: uppercase;
-}
-
-.menu ul li::after{
-	content: '';
-	height: 3px;
-	width: 0;
-	background: #009688;
-	position: absolute;
-	left: 0;
-	bottom: -10px;
-	transition: 0.5s;
-}
-
-.menu ul li:hover::after{
-	width: 100%;
-}
-
-.bawah{
-  display: none;
-}
-
-/*container*/
-
-body {
-  font-family: Arial;
-  margin: 0;
-  background: black;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-img {
-  vertical-align: middle;
-}
-
-
-/* Position the image container (needed to position the left and right arrows) */
-.container {
-  position: relative;
-  width: 80%;
-  margin: auto;
-}
-
-.container img{
-  margin: auto;
-}
-
-/* Hide the images by default */
-.mySlides {
-  display: none;
-}
-
-/* Add a pointer when hovering over the thumbnail images */
-.cursor {
-  cursor: pointer;
-}
-
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 40%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* Container for image text */
-.caption-container {
-  text-align: center;
-  background-color: #222;
-  padding: 2px 16px;
-  color: white;
-}
-
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Six columns side by side */
-.column {
-  float: left;
-  width: 16.66%;
-}
-
-/* Add a transparency effect for thumnbail images */
-.demo {
-  opacity: 0.6;
-}
-
-.active,
-.demo:hover {
-  opacity: 1;
-}
-
-/*isi cerita*/
-
-.kotak1,.kotak2,.kotak3{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: 10px;
-}
-
-.gambar,.gambar3{
-    flex: 1.5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.gambar2{
-    flex: 1.5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.teks{
-    flex: 1;
-    color: #000000;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: comic sans ms;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.teks h2{
-  color: #000000;
-}
-
-.teks3{
-    flex: 1;
-    color: #f1f1f1;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: comic sans ms;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.teks2{
-    flex: 1;
-    color: black;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: comic sans ms;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.teks2 p,.teks2 h2{
-    margin-left: 50px;
-    color: black;
-}
-
-h2{
-    font-family: comic sans ms;
-    font-weight: 800;
-    font-size: 45px;
-    margin-bottom: 20px;
-    color: white;
-    width: 100%;
-    line-height: 50px;
-}
-
-.tbl-pink{
-    margin-top: 10px;
-    text-decoration: none;
-    display: inline-block;
-}
-
-a.tbl-pink {
-  background: #628395 ;
-  border-radius: 20px;
-  padding: 15px 20px 15px 20px;
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-a.tbl-pink:hover {
-  background: #50CB93;
-  text-decoration: none;
-}
-
-.tbl-hitam{
-    margin-top: 10px;
-    text-decoration: none;
-    display: inline-block;
-}
-
-a.tbl-hitam{
-  background: rgb(17, 109, 63) ;
-  border-radius: 20px;
-  padding: 15px 20px 15px 20px;
-  color: white ;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-a.tbl-hitam:hover{
-  background: #628395;
-  text-decoration: none;
-}
-
-.kotak1{
-  background-color: #D9EEE1;
-  width: 100%;
-  margin-left: 0px;
-  padding: 10px;
-  margin-bottom: 0px;
-}
-
-.kotak2{
-  background-color: #FFF4A3;
-  margin-top: 0px;
-  width: 100%;
-  margin-left: 0px;
-  padding: 10px;
-  margin-bottom: 0px;
-}
-
-.kotak3{
-  background-color: #282A35;
-  margin-top: 0px;
-  width: 100%;
-  margin-left: 0px;
-  padding: 10px;
-  margin-bottom: 0px;
-}
-
-.contact{
-  background-color: #515E63;
-  margin-top: 0px;
-  width: 100%;
-  margin-left: 0px;
-  padding: 10px;
-  margin-top: 0px;
-}
-
-/*kontak*/
-
-.kolom{
-    display: flex;
-    flex-direction: column;
-    color: white;
-    align-items: center;
-    justify-content: space-around;
-    text-align: center;
-    margin-top: 20px;
-}
-
-.tengah {
-  text-align: center;
-  width: 100%;
-  display: flex;
-  height: 200px;
-}
-
-.contact-list {
-  width: 100%;
-  height: 100px;
-  position: relative;
-  display: flex;
-  margin-top: 30px;
-  flex-wrap: wrap;
-}
-
-.kartu-contact{
-  flex: 1;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-}
-
-.kartu-contact img{
-  width: 20%;
-  border-radius: 50%;
-}
-
-.kartu-contact p a{
-  font-family: comic sans ms;
-  font-weight: 800;
-  font-size: 25px;
-  text-align: center;
-  color: #ffffff;
-  text-decoration: none;
-}
-
-/*tampilan android*/
-
-@media (min-width: 320px) and (max-width:1024px){
-
-
-.menu ul li{
-  margin: 5px;
-  
-}
-
-/*isi cerita*/
-
-.kotak1{
-  background-color: #D9EEE1;
-  width: 100%;
-  margin-left: 0px;
-  padding: 10px;
-  margin-bottom: 0px;
-}
-
-.kotak2{
-  background-color: #FFF4A3;
-  margin-top: 0px;
-  width: 100%;
-  margin-left: 0px;
-  padding: 10px;
-  margin-bottom: 0px;
-}
-
-.kotak3{
-  background-color: #282A35;
-  margin-top: 0px;
-  width: 100%;
-  margin-left: 0px;
-  padding: 10px;
-  margin-bottom: 0px;
-}
-
-.contact{
-  background-color: #515E63;
-  margin-top: 0px;
-  width: 100%;
-  margin-left: 0px;
-  padding: 10px;
-}
-
-.kotak1,.kotak2,.kotak3{
-  display: flex;
-  flex-direction: column;
-}
-
-.kotak1 img,.kotak2 img,.kotak3 img{
-  width: 200px;
-}
-
-.teks2 p,.teks2 h2{
-  margin-left: 0px;
-}
-
-.teks2{
-  order: 2;
-}
-
-
-
-/*container*/
-
-.container{
-    width: 100%;
-    margin: auto;
-}
-
-}
-
-
-@media (min-width: 320px) and (max-width:710px){
-
-/*atas*/
-
-body{
-height: 100%;
-} 
-
-.nav{
-  width: 100%;
-}
-
-.menu a{
-  width: 90%;
-  margin-left: 10px;
-  font-size: 30px;
-  text-align: left;
-  padding: 0px;
-}
-
-.menu .logo{
-  width: 100%;
-}
-
-.menu{
-  display: flex;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.menu ul {
-  width: 100%;
-display: none;
-  text-align: center;
-  margin: 0px;
-  line-height: 20px;
-}
-
-.menu ul li {
-  display: inline-block;
-  float: none;
-  size: 50%;
-  margin: 0px 8px;
-}
-
-
-
-/*bawah*/
-
-.bawah{
-  display: flex;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height:50px;
-  justify-content: space-evenly;
-  align-items: center;
-  overflow: hidden;
-  background-color: #f1f1f1;
-}
-
-.bawah a{
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  font-size: 17px;
-  border-bottom: 3px solid transparent;
-}
-
-.bawah a:hover{
-  border-bottom: 5px solid #009688;
-}
-
-.home a,.profile a,.gallery a,.about a{
-  text-decoration: none;
-  color: black;
-}
-
-
-
-}
-
-</style>
-
 <body>
+    <header>
+        <a href="" class="logo">SKUMIDA ZOO</a>
+    </header>
     
-<!--atas-->
-<div class="nav">
-    <div class="menu">
-        <a href="index.html" class="logo">Skumida Zoo.</a>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="profile.html">Profile</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="about.html">About</a></li>
-        </ul>
-    </div>
-</div>
+    <section>
+        <img src="img/stars.png" id="stars">
+        <img src="img/moon.png" id="moon">
+        <img src="img/mountains_behind.png" id="mountain_behind">
+        <h2 id="text">Skumida Zoo</h2>
+        <a href="home.html" id="btn">Explore</a>
+        <img src="img/mountains_front.png" id="mountains_front">
+    </section>
 
-<!--container-->
-
-<div class="container">
-    <div class="mySlides">
-      <div class="numbertext">1 / 6</div>
-      <img src="https://1.bp.blogspot.com/-d4ChO2YJ2yk/YPfIzye2wCI/AAAAAAAAAGM/3hOZQ_mOclYO7mwD1Xc7rwm9hSnQfXxrgCLcBGAsYHQ/s1346/1.jpg" style="width:100%">
-    </div>
-  
-    <div class="mySlides">
-      <div class="numbertext">2 / 6</div>
-      <img src="https://1.bp.blogspot.com/-UqOBR-MdV_g/YPfIz0k1nPI/AAAAAAAAAGQ/UMMX7zLHhgg7PJRQqVOtmdmpLE8C89flQCLcBGAsYHQ/s320/2.jpg" style="width:100%">
-    </div>
-  
-    <div class="mySlides">
-      <div class="numbertext">3 / 6</div>
-      <img src="https://1.bp.blogspot.com/-MMBWo5o35_Q/YPfIznFNt4I/AAAAAAAAAGI/whn3DFlgdUIBQ9wRpSpmvySlGh699jQsACLcBGAsYHQ/s320/3.jpg" style="width:100%">
-    </div>
-      
-    <div class="mySlides">
-      <div class="numbertext">4 / 6</div>
-      <img src="https://1.bp.blogspot.com/-DrBNv4mB8SA/YPfI05lX_SI/AAAAAAAAAGU/l_YIAWt-ERAZ_wEbgW2iqIQGXnsApGmKACLcBGAsYHQ/s1346/4.jpg" style="width:100%">
-    </div>
-  
-    <div class="mySlides">
-      <div class="numbertext">5 / 6</div>
-      <img src="https://1.bp.blogspot.com/-AXLdta36Sls/YPfI1TOZcVI/AAAAAAAAAGg/ZcrG2jaOizoYbD3owAQtvNY3_MP9kouYgCLcBGAsYHQ/s1346/5.jpg" style="width:100%">
-    </div>
-      
-    <div class="mySlides">
-      <div class="numbertext">6 / 6</div>
-      <img src="https://1.bp.blogspot.com/-6-PxGX8A4SU/YPfI1J2rHxI/AAAAAAAAAGY/G9cLl6LFSO4Q0KNZWsZ6AeEmZD3Y5NX3ACLcBGAsYHQ/s1346/6.jpg" style="width:100%">
-    </div>
-      
-    <a class="prev" onclick="plusSlides(-1)">❮</a>
-    <a class="next" onclick="plusSlides(1)">❯</a>
-  
-    <div class="caption-container">
-      <p id="caption"></p>
-    </div>
-  
-    <div class="row">
-      <div class="column">
-        <img class="demo cursor" src="https://1.bp.blogspot.com/-d4ChO2YJ2yk/YPfIzye2wCI/AAAAAAAAAGM/3hOZQ_mOclYO7mwD1Xc7rwm9hSnQfXxrgCLcBGAsYHQ/s1346/1.jpg" style="width:100%" onclick="currentSlide(1)" alt="sebelum makan foto dulu eakk..">
-      </div>
-      <div class="column">
-        <img class="demo cursor" src="https://1.bp.blogspot.com/-UqOBR-MdV_g/YPfIz0k1nPI/AAAAAAAAAGQ/UMMX7zLHhgg7PJRQqVOtmdmpLE8C89flQCLcBGAsYHQ/s320/2.jpg" style="width:100%" onclick="currentSlide(2)" alt="foto lagi..">
-      </div>
-      <div class="column">
-        <img class="demo cursor" src="https://1.bp.blogspot.com/-MMBWo5o35_Q/YPfIznFNt4I/AAAAAAAAAGI/whn3DFlgdUIBQ9wRpSpmvySlGh699jQsACLcBGAsYHQ/s320/3.jpg" style="width:100%" onclick="currentSlide(3)" alt="akhirnya touring">
-      </div>
-      <div class="column">
-        <img class="demo cursor" src="https://1.bp.blogspot.com/-DrBNv4mB8SA/YPfI05lX_SI/AAAAAAAAAGU/l_YIAWt-ERAZ_wEbgW2iqIQGXnsApGmKACLcBGAsYHQ/s1346/4.jpg" style="width:100%" onclick="currentSlide(4)" alt="dah lama gak mandi">
-      </div>
-      <div class="column">
-        <img class="demo cursor" src="https://1.bp.blogspot.com/-AXLdta36Sls/YPfI1TOZcVI/AAAAAAAAAGg/ZcrG2jaOizoYbD3owAQtvNY3_MP9kouYgCLcBGAsYHQ/s1346/5.jpg" style="width:100%" onclick="currentSlide(5)" alt="ciwi-ciwi skumida">
-      </div>    
-      <div class="column">
-        <img class="demo cursor" src="https://1.bp.blogspot.com/-6-PxGX8A4SU/YPfI1J2rHxI/AAAAAAAAAGY/G9cLl6LFSO4Q0KNZWsZ6AeEmZD3Y5NX3ACLcBGAsYHQ/s1346/6.jpg" style="width:100%" onclick="currentSlide(6)" alt="calon-calon pemimpin masa depan">
-      </div>
-    </div>
-  </div>
-  </div>
-  <div class="wrapper" style="width:100%;">
-  
-<!--isi cerita-->
-
-<div class="kotak1">
-    <div class="gambar">
-        <img src="https://1.bp.blogspot.com/-XOWQNWTyCm0/YPfI1ZVl1OI/AAAAAAAAAGc/6bdUaZaWIWwZf32vWnpK1kt2HIcsUNNOACLcBGAsYHQ/s630/pantai1.jpg" >
-    </div>
-    <div class="teks">
-        <p>Skumida ke Pantai</p>
-		<h2>Perjalanan tergajelas</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod</p>
-		<p><a href="pantai.html" class="tbl-pink">Pelajari Lebih Lanjut</a></p>
-    </div>
-</div>
-
-<div class="kotak2">
-    <div class="teks2">
-        <p>Bukber</p>
-		<h2>Makan dulu eak..</h2>
-		<p>Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p><a href="bukber.html" class="tbl-hitam">Pelajari lebih lanjut</a></p>
-    </div>
-    <div class="gambar2">
-        <img src="https://1.bp.blogspot.com/-d4ChO2YJ2yk/YPfIzye2wCI/AAAAAAAAAGM/3hOZQ_mOclYO7mwD1Xc7rwm9hSnQfXxrgCLcBGAsYHQ/s1346/1.jpg" width="650px">
-    </div>
-</div>
-
-<div class="kotak3">
-    <div class="gambar3">
-        <img src="https://1.bp.blogspot.com/-DrBNv4mB8SA/YPfI05lX_SI/AAAAAAAAAGU/l_YIAWt-ERAZ_wEbgW2iqIQGXnsApGmKACLcBGAsYHQ/s1346/4.jpg" width="650px" >
-    </div>
-    <div class="teks3">
-        <p>Touring</p>
-		<h2>Untuk pertama kalinya anak skumida touring</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed eiusmod</p>
-		<p><a href="touring.html" class="tbl-pink">Pelajari Lebih Lanjut</a></p>
-    </div>
-</div>
-
-<!--kontak-->
-
-<div class="contact">
-    <div class="kolom">
-        <p class="deskripsi">Contact us</p>
-        <h2>Contact</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. </p>
-    </div>
-    <div class="contact-list">
-        <div class="kartu-contact">
-            <img src="https://m.media-amazon.com/images/M/MV5BNjZiY2RhMzctMDc5Mi00ZmFiLTgzNjctM2E4YTFiMzk0Y2RiXkEyXkFqcGdeQXVyNDY5MjMyNTg@._V1_.jpg">
-            <p><a href="">Krystal Jung</a></p>
-        </div>
-        <div class="kartu-contact">
-            <img src="https://m.media-amazon.com/images/M/MV5BNjZiY2RhMzctMDc5Mi00ZmFiLTgzNjctM2E4YTFiMzk0Y2RiXkEyXkFqcGdeQXVyNDY5MjMyNTg@._V1_.jpg">
-            <p><a href="">Krystal Jung</a></p>
-        </div>
+    <div class="sec">
+        <h2>Parallax Scrolling Effects</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam laboriosam ipsam deserunt similique iure perferendis iusto tenetur, nulla sunt. Explicabo nobis possimus architecto voluptas necessitatibus, suscipit perferendis itaque fugiat neque!. Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci in, temporibus possimus libero, quaerat cumque sequi rerum error deserunt fugit quisquam eveniet assumenda quidem soluta obcaecati illum rem labore saepe? <br><br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam laboriosam ipsam deserunt similique iure perferendis iusto tenetur, nulla sunt. Explicabo nobis possimus architecto voluptas necessitatibus, suscipit perferendis itaque fugiat neque!. Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci in, temporibus possimus libero, quaerat cumque sequi rerum error deserunt fugit quisquam eveniet assumenda quidem soluta obcaecati illum rem labore saepe? <br><br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam laboriosam ipsam deserunt similique iure perferendis iusto tenetur, nulla sunt. Explicabo nobis possimus architecto voluptas necessitatibus, suscipit perferendis itaque fugiat neque!. Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci in, temporibus possimus libero, quaerat cumque sequi rerum error deserunt fugit quisquam eveniet assumenda quidem soluta obcaecati illum rem labore saepe? <br><br></p>
     </div>
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <script>
+        let stars = document.getElementById('stars');
+        let moon = document.getElementById('moon');
+        let mountains_behind = document.getElementById('mountains_behind');
+        let text = document.getElementById('text');
+        let btn = document.getElementById('btn');
+        let mountains_front = document.getElementById('mountains_front');
+        let header = document.querySelector('header');
 
-</div>
-
-<!--bawah-->
-
-<div class="bawah">
-    <div class="home">
-      <a href="home.html">Home</a>
-    </div>
-    <div class="profile">
-      <a href="profile.html">Profile</a>
-    </div>
-    <div class="gallery">
-      <a href="gallery.html">Gallery</a>
-    </div>
-    <div class="about">
-      <a href="about.html">About</a>
-    </div>
-  </div>
-
-<!--script-->
-
-<script>
-
-/*untuk container*/
-
-    var slideIndex = 1;
-    showSlides(slideIndex);
-    
-    function plusSlides(n) {
-      showSlides(slideIndex += n);
-    }
-    
-    function currentSlide(n) {
-      showSlides(slideIndex = n);
-    }
-    
-    function showSlides(n) {
-      var i;
-      var slides = document.getElementsByClassName("mySlides");
-      var dots = document.getElementsByClassName("demo");
-      var captionText = document.getElementById("caption");
-      if (n > slides.length) {slideIndex = 1}
-      if (n < 1) {slideIndex = slides.length}
-      for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-      }
-      for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-      }
-      slides[slideIndex-1].style.display = "block";
-      dots[slideIndex-1].className += " active";
-      captionText.innerHTML = dots[slideIndex-1].alt;
-    }
-</script>
-
+        window.addEventListener('scroll',function(){
+            let value = window.scrollY;
+            stars.style.left = value * 0.25 + 'px';
+            moon.style.top = value * 1.05 + 'px';
+            text.style.marginRight = value * 4 + 'px';
+            btn.style.marginTop = value * 1.5 + 'px';
+            header.style.top = value * 0.5 + 'px';
+        })
+    </script>
 </body>
 </html>
