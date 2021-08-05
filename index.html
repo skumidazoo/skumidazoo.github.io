@@ -109,7 +109,12 @@
         white-space: nowrap;
         font-size: 7.5vw;
         z-index: 9;
-        right: -350px;
+        right:-220px;
+    }
+
+    #text::after{
+        content: ' Datang';
+        color: black;
     }
 
     #btn{
@@ -141,6 +146,18 @@
         color: #fff;
     }
 
+    @media (min-width: 320px) and (max-width:1024px){
+        h2#text{
+            font-size: 100px ;
+            right: -600px;
+        }
+
+        header{
+            width: 100%;
+            justify-content: center;
+        }
+    }
+
     </style>
 </head>
 <body>
@@ -152,7 +169,7 @@
         <img src="img/stars.png" id="stars">
         <img src="img/moon.png" id="moon">
         <img src="img/mountains_behind.png" id="mountain_behind">
-        <h2 id="text">Skumida Zoo</h2>
+        <h2 id="text">Selamat</h2>
         <a href="home.html" id="btn">Explore</a>
         <img src="img/mountains_front.png" id="mountains_front">
     </section>
