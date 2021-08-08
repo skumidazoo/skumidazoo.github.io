@@ -1,61 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SKUMIDA ZOO</title>
-
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="ico/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="ico/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="ico/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="ico/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="ico/apple-touch-icon-114x114.png" />
-    <link rel="icon" type="image/png" href="ico/apple-touch-icon-114x114.png" sizes="196x196" />
-    <link rel="icon" type="image/png" href="ico/apple-touch-icon-114x114.png" sizes="96x96" />
-    <link rel="icon" type="image/png" href="ico/apple-touch-icon-114x114.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="ico/apple-touch-icon-114x114.png" sizes="16x16" />
-    <link rel="icon" type="image/png" href="ico/apple-touch-icon-114x114.png" sizes="128x128" />
-    <meta name="application-name" content="&nbsp;"/>
-    <meta name="msapplication-TileColor" content="#FFFFFF" />
-    <meta name="msapplication-TileImage" content="ico/mstile-144x144.png" />
-    <meta name="msapplication-square70x70logo" content="ico/mstile-70x70.png" />
-    <meta name="msapplication-square150x150logo" content="ico/mstile-150x150.png" />
-    <meta name="msapplication-wide310x150logo" content="ico/mstile-310x150.png" />
-    <meta name="msapplication-square310x310logo" content="ico/mstile-310x310.png" />
-
+    <title>Document</title>
     <style>
-        h1{
-            text-align: center;
+        :root {
+            --card_width: 250px;
+            --row_increment: 10px;
+            --card_border_radius: 16px;
+            --card_small: 26;
+            --card_medium: 33;
+            --card_large: 45;
         }
 
-        p{
-            text-decoration: none;
-            background-color: rgb(26, 185, 132);
-            padding: 20px;
-            width: 50px;
-            border-radius: 20px;
-            text-align: center;
-            margin: auto;
+        body {
+            margin: 0;
+            padding: 0;
+            padding-top: 5px;
+            background-color: grey;
         }
 
-        a{
-            text-decoration: none;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            color: cornsilk;
-            font-size: large;
+        .pin_container {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+
+            display: grid;
+            grid-template-columns: repeat(auto-fill, var(--card_width));
+            grid-auto-rows: var(--row_increment);
+            justify-content: center;
+
+            background-color: black;
         }
 
-        p:hover{
-            background-color: rgb(82, 105, 97);
+        .card {
+            padding: 0;
+            margin: 15px 10px;
+            border-radius: var(--card_border_radius);
+            background-color: white;
+            transition: transform .2s;
         }
+
+        .card:hover{
+            -ms-transform: scale(1.5); /* IE 9 */
+            -webkit-transform: scale(1.5); /* Safari 3-8 */
+            transform: scale(1.5);
+        }
+
+        .card_small {
+            grid-row-end: span var(--card_small);
+            transition: transform .2s;
+        }
+        
+        .card_small img{
+            width:100%;
+            height: 100%;
+            border-radius: 16px;
+            object-fit: cover;
+        }
+
+        .card_small:hover{
+            -ms-transform: scale(0.5); /* IE 9 */
+            -webkit-transform: scale(0.5); /* Safari 3-8 */
+            transform: scale(1.2);
+        }
+
+
+        .card_medium {
+            grid-row-end: span var(--card_medium);
+        }
+
+        .card_large {
+            grid-row-end: span var(--card_large);
+        }
+
+        .card_large img{
+            width:100%;
+            height: 100%;
+            border-radius: 16px;
+            object-fit: cover;
+        }
+
+        img{
+            opacity: 0.6;
+        }
+
+        img:hover{
+            opacity: 1.5;
+        }
+
+
     </style>
+
 </head>
+
 <body>
-    <h1>COMING SOON...</h1>
-    <p><a href="home.html">BACK</a></p>
+    <div class="pin_container">
+        <div class="card card_small">
+            <a href=""><img src="https://1.bp.blogspot.com/-6-PxGX8A4SU/YPfI1J2rHxI/AAAAAAAAAGY/G9cLl6LFSO4Q0KNZWsZ6AeEmZD3Y5NX3ACLcBGAsYHQ/s1346/6.jpg" ></a>
+        </div>
+        <div class="card card_medium"></div>
+        <div class="card card_large">
+            <img src="https://1.bp.blogspot.com/-DrBNv4mB8SA/YPfI05lX_SI/AAAAAAAAAGU/l_YIAWt-ERAZ_wEbgW2iqIQGXnsApGmKACLcBGAsYHQ/s1346/4.jpg" alt="">
+        </div>
+        <div class="card card_medium"></div>
+        <div class="card card_small"></div>
+        <div class="card card_large"></div>
+        <div class="card card_medium"></div>
+        <div class="card card_small"></div>
+        <div class="card card_medium"></div>
+        <div class="card card_small"></div>
+        <div class="card card_medium"></div>
+        <div class="card card_large"></div>
+        <div class="card card_medium"></div>
+        <div class="card card_small"></div>
+        <div class="card card_medium"></div>
+        <div class="card card_large"></div>
+        <div class="card card_small"></div>
+        <div class="card card_medium"></div>
+        <div class="card card_small"></div>
+        <div class="card card_medium"></div>
+    </div>
 </body>
+
 </html>
